@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $(".btn_mostrar").click(function (e) {
+    $("#buscar").click(function (e) {
         e.preventDefault();
         mostrarProd();
     });
@@ -8,13 +8,14 @@ $(document).ready(function () {
     function mostrarProd() {
         $.ajax({
                 method: "POST",
-                url: "php/wrap.php",
+                url: "php/buscarProd.php",
                 data: {
-                    text: $("p.unbroken").text()
+                    text: $("#producto").val(),
+                    table:"productos"
                 }
             })
             .done(function (response) {
-                $("p.broken").html(response);
+                $(".content").html(response);
             });
     }
 });

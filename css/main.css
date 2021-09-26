@@ -1,0 +1,91 @@
+header {
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  background: #f7c7c7;
+}
+
+header .row {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+}
+
+header .logo {
+  width: 100px;
+  margin: 10px;
+}
+
+header .title {
+  margin: auto;
+}
+
+header .links {
+  margin: auto;
+}
+
+header .links a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  margin-right: 10px;
+  color: black;
+  font-weight: bold;
+}
+
+header .links a:hover {
+  color: white;
+}
+
+section .barra_buscar {
+  margin-bottom: 20px;
+}
+
+section .barra_buscar .form-inline label {
+  margin-right: 20px;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+section .barra_buscar .form-inline .form-control {
+  margin-right: 20px;
+  width: 300px !important;
+}
+
+section .barra_buscar .form-inline .form-control:focus {
+  border-color: #f7c7c7;
+  box-shadow: 0 0 0 0.2rem #f7c7c7;
+}
+
+section .barra_buscar .form-inline .btn {
+  color: #f7c7c7;
+  background-color: black;
+  border-color: black;
+}
+
+section .barra_buscar .form-inline .btn:hover {
+  color: black;
+  background-color: #f7c7c7;
+  border-color: #f7c7c7;
+}
+
+section .barra_buscar .form-inline .btn:focus {
+  box-shadow: 0 0 0 0.2rem #cfa7a7;
+}
+
+section .contenido .table {
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+}
+
+section .contenido .table .thead {
+  background: #f7c7c7;
+  font-size: 1.5rem;
+}
+
+footer p {
+  text-align: center;
+  position: relative;
+  bottom: 0px;
+  right: 40%;
+}
+/*# sourceMappingURL=main.css.map */
