@@ -1,5 +1,4 @@
 <?php
-$producto = $_POST['text'];
 $productos = $_POST['table'];
 // Se conecta al SGBD 
 if(!($mysql = mysqli_connect("localhost", "almacen", "almacen"))) 
@@ -8,7 +7,7 @@ die("Error: No se pudo conectar");
 if(!mysqli_select_db($mysql,"almacen")) 
 die("Error: No existe la base de datos");
 // Sentencia SQL: muestra todo el contenido de la tabla "books" 
-$sentencia = "SELECT * FROM $productos WHERE nombre LIKE'%$producto%'"; 
+$sentencia = "SELECT * FROM $productos WHERE cantidad<=5"; 
 // Ejecuta la sentencia SQL 
 $resultado = mysqli_query($mysql, $sentencia); 
 if(!$resultado) 
@@ -24,7 +23,7 @@ while($fila = mysqli_fetch_array($resultado)) {
     $aux++;
 } 
 if ($aux==0) {
-    echo '<td style="text-align: center;" colspan="4">No Hay Resultados para: "'. $producto .'"</td>';    
+    echo '<td colspan="4">No Hay Resultados para: "'. $producto .'"</td>';    
 }
 echo '</table>';
 

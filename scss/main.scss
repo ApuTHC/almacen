@@ -1,5 +1,5 @@
-$color-principal: rgb(247, 199, 199);
-$color-principal-transp: rgb(207, 167, 167);
+$color-principal: rgb(97, 196, 226);
+$color-principal-transp: rgba(97, 196, 226, 0.76);
 
 header {
     padding-bottom: 5px;
@@ -15,7 +15,7 @@ header {
 
     .logo {
         width: 100px;
-        margin: 10px;
+        margin: 20px;
     }
 
     .title {
@@ -28,13 +28,22 @@ header {
         a {
             font-size: 1.2rem;
             text-decoration: none;
+            padding-right: 10px;
             margin-right: 10px;
             color: black;
             font-weight: bold;
+            border-right: solid 2px black;
 
-            &:hover {
+            &.hovered{
                 color: white;
             }
+            &:hover {
+                color: white;
+            } 
+            &:last-child {
+                border-right: none;
+            }
+            
         }
     }
 }
@@ -49,11 +58,10 @@ section {
                 font-size: 1.7rem;
                 font-weight: bold;
             }
-
             .form-control {
                 margin-right: 20px;
+                
                 width: 300px !important;
-
                 &:focus {
                     border-color: $color-principal;
                     box-shadow: 0 0 0 0.2rem $color-principal;
@@ -62,31 +70,92 @@ section {
 
             .btn {
                 color: $color-principal;
-                background-color: rgb(0, 0, 0);
+                background: rgb(0, 0, 0);
                 border-color: rgb(0, 0, 0);
-
+                margin-right: 15px;
                 &:hover {
                     color: rgb(0, 0, 0);
                     background-color: $color-principal;
                     border-color: $color-principal;
                 }
-
                 &:focus {
                     box-shadow: 0 0 0 0.2rem $color-principal-transp;
+                }
+                &.disabled{
+                    &:hover{
+                        color: $color-principal;
+                        background: rgb(0, 0, 0);
+                        border-color: rgb(0, 0, 0);
+                    }
                 }
             }
         }
     }
 
     .contenido {
+        h4{
+            font-weight: bold;
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+        }
         .table {
             font-size: 1.2rem;
             margin-bottom: 50px;
+            text-align: center;
+            
             .thead {
                 background: $color-principal;
                 font-size: 1.5rem;
+                th{
+                    border: 2px solid #000000;
+                }
+            }
+
+            td{
+                border: 2px solid #000000;
+                padding: 0.3rem;
             }
         }
+
+        .content{
+            label{
+                margin-right: 5px;
+            }
+            .form-control{
+                display: inline;
+                width: 150px;
+                margin-right: 10px;
+            }
+            .rojo{
+                color: #ff6262;
+                transition: all .5s ease;
+                height: 30px;
+            }
+            .verde{
+                color: #45cf43;
+                transition: all .5s ease;
+                height: 30px;
+            }
+            .btn{
+                transition: all .3s ease;
+                color: $color-principal;
+                background: rgb(0, 0, 0);
+                border-color: rgb(0, 0, 0);
+                margin-right: 15px;
+                margin-top: 10px;
+                display: block;
+                &:hover {
+                    color: rgb(0, 0, 0);
+                    background-color: $color-principal;
+                    border-color: $color-principal;
+                }
+                &:focus {
+                    box-shadow: 0 0 0 0.2rem $color-principal-transp;
+                }
+            }
+
+        }
+
     }
 }
 

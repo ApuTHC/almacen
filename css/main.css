@@ -1,7 +1,7 @@
 header {
   padding-bottom: 5px;
   margin-bottom: 20px;
-  background: #f7c7c7;
+  background: #61c4e2;
 }
 
 header .row {
@@ -13,7 +13,7 @@ header .row {
 
 header .logo {
   width: 100px;
-  margin: 10px;
+  margin: 20px;
 }
 
 header .title {
@@ -27,13 +27,23 @@ header .links {
 header .links a {
   font-size: 1.2rem;
   text-decoration: none;
+  padding-right: 10px;
   margin-right: 10px;
   color: black;
   font-weight: bold;
+  border-right: solid 2px black;
+}
+
+header .links a.hovered {
+  color: white;
 }
 
 header .links a:hover {
   color: white;
+}
+
+header .links a:last-child {
+  border-right: none;
 }
 
 section .barra_buscar {
@@ -52,34 +62,99 @@ section .barra_buscar .form-inline .form-control {
 }
 
 section .barra_buscar .form-inline .form-control:focus {
-  border-color: #f7c7c7;
-  box-shadow: 0 0 0 0.2rem #f7c7c7;
+  border-color: #61c4e2;
+  box-shadow: 0 0 0 0.2rem #61c4e2;
 }
 
 section .barra_buscar .form-inline .btn {
-  color: #f7c7c7;
-  background-color: black;
+  color: #61c4e2;
+  background: black;
   border-color: black;
+  margin-right: 15px;
 }
 
 section .barra_buscar .form-inline .btn:hover {
   color: black;
-  background-color: #f7c7c7;
-  border-color: #f7c7c7;
+  background-color: #61c4e2;
+  border-color: #61c4e2;
 }
 
 section .barra_buscar .form-inline .btn:focus {
-  box-shadow: 0 0 0 0.2rem #cfa7a7;
+  box-shadow: 0 0 0 0.2rem rgba(97, 196, 226, 0.76);
+}
+
+section .barra_buscar .form-inline .btn.disabled:hover {
+  color: #61c4e2;
+  background: black;
+  border-color: black;
+}
+
+section .contenido h4 {
+  font-weight: bold;
+  font-size: 1.7rem;
+  margin-bottom: 20px;
 }
 
 section .contenido .table {
   font-size: 1.2rem;
   margin-bottom: 50px;
+  text-align: center;
 }
 
 section .contenido .table .thead {
-  background: #f7c7c7;
+  background: #61c4e2;
   font-size: 1.5rem;
+}
+
+section .contenido .table .thead th {
+  border: 2px solid #000000;
+}
+
+section .contenido .table td {
+  border: 2px solid #000000;
+  padding: 0.3rem;
+}
+
+section .contenido .content label {
+  margin-right: 5px;
+}
+
+section .contenido .content .form-control {
+  display: inline;
+  width: 150px;
+  margin-right: 10px;
+}
+
+section .contenido .content .rojo {
+  color: #ff6262;
+  transition: all .5s ease;
+  height: 30px;
+}
+
+section .contenido .content .verde {
+  color: #45cf43;
+  transition: all .5s ease;
+  height: 30px;
+}
+
+section .contenido .content .btn {
+  transition: all .3s ease;
+  color: #61c4e2;
+  background: black;
+  border-color: black;
+  margin-right: 15px;
+  margin-top: 10px;
+  display: block;
+}
+
+section .contenido .content .btn:hover {
+  color: black;
+  background-color: #61c4e2;
+  border-color: #61c4e2;
+}
+
+section .contenido .content .btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(97, 196, 226, 0.76);
 }
 
 footer p {
