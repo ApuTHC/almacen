@@ -2,6 +2,8 @@ $(document).ready(function () {
     var edit=0;
     var nombre;
     var producto;
+    var trid;
+
     mostrarProd();
 
     $("#buscar").click(function (e) {
@@ -36,7 +38,7 @@ $(document).ready(function () {
             }
             setTimeout(() => {
                mostrarProd(); 
-            }, 300);
+            }, 500);
             
             edit=0;
         }
@@ -78,6 +80,30 @@ $(document).ready(function () {
         // agregar("");
     });
 
+    $("#borrar").click(function (e) {
+        e.preventDefault();
+        $("#editar").prop("disabled", true);
+        $("#editar").addClass("disabled");
+        $("#borrar").prop("disabled", true);
+        $("#borrar").addClass("disabled");
+        borrar();
+    });
+
+    $("#borrar2").click(function (e) {
+        borrar2(trid);
+        setTimeout(() => {
+            borrar();
+        }, 500);
+    });
+
+    $('#borrarModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        trid = button.data('whatever') // Extract info from data-* attributes
+        var modal = $(this)
+        modal.find('.modal-title').text('Espere un momento')
+        modal.find('.modal-body .modal-text').text('Seguro que desea borrar el producto: '+$("#"+trid+" .nombre").text())
+    })
+
     function mostrarProd() {
         producto=$("#producto").val();
         $.ajax({
@@ -87,6 +113,39 @@ $(document).ready(function () {
                     text: producto,
                     table: "productos",
                     modo: "inventario"
+                }
+            })
+            .done(function (response) {
+                $(".content").html(response);
+            });
+    }
+
+    function borrar() {
+        producto=$("#producto").val();
+        $.ajax({
+                method: "POST",
+                url: "php/inventario.php",
+                data: {
+                    text: producto,
+                    table: "productos",
+                    modo: "borrar"
+                }
+            })
+            .done(function (response) {
+                $(".content").html(response);
+            });
+    }
+
+    function borrar2(idborrar) {
+        producto=$("#producto").val();
+        $.ajax({
+                method: "POST",
+                url: "php/inventario.php",
+                data: {
+                    text: producto,
+                    table: "productos",
+                    modo: "borrar2",
+                    idborrar: idborrar
                 }
             })
             .done(function (response) {

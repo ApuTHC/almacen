@@ -51,41 +51,56 @@ header {
 section {
     .barra_buscar {
         margin-bottom: 20px;
-
+        
         .form-inline {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            height: 80px;
             label {
                 margin-right: 20px;
-                font-size: 1.7rem;
+                font-size: 1.5rem;
                 font-weight: bold;
             }
             .form-control {
                 margin-right: 20px;
                 
-                width: 300px !important;
+                width: 250px !important;
                 &:focus {
                     border-color: $color-principal;
                     box-shadow: 0 0 0 0.2rem $color-principal;
                 }
             }
-
-            .btn {
-                color: $color-principal;
-                background: rgb(0, 0, 0);
-                border-color: rgb(0, 0, 0);
-                margin-right: 15px;
-                &:hover {
-                    color: rgb(0, 0, 0);
-                    background-color: $color-principal;
-                    border-color: $color-principal;
-                }
-                &:focus {
-                    box-shadow: 0 0 0 0.2rem $color-principal-transp;
-                }
-                &.disabled{
-                    &:hover{
-                        color: $color-principal;
-                        background: rgb(0, 0, 0);
-                        border-color: rgb(0, 0, 0);
+            .btns{
+                padding: 10px 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-content: center;
+                justify-content: center;
+                align-items: center;
+                .btn {
+                    color: $color-principal;
+                    background: rgb(0, 0, 0);
+                    border-color: rgb(0, 0, 0);
+                    margin-right: 10px;
+                    &:last-child{
+                        margin-right: 0px;
+                    }
+                    &:hover {
+                        color: rgb(0, 0, 0);
+                        background-color: $color-principal;
+                        border-color: $color-principal;
+                    }
+                    &:focus {
+                        box-shadow: 0 0 0 0.2rem $color-principal-transp;
+                    }
+                    &.disabled{
+                        &:hover{
+                            color: $color-principal;
+                            background: rgb(0, 0, 0);
+                            border-color: rgb(0, 0, 0);
+                        }
                     }
                 }
             }
@@ -135,6 +150,12 @@ section {
                 color: #45cf43;
                 transition: all .5s ease;
                 height: 30px;
+            }
+            .borrar{
+                &:hover{
+                    background-color: #ff383894;
+                    cursor: pointer;
+                }
             }
             .btn{
                 transition: all .3s ease;

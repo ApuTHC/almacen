@@ -50,15 +50,22 @@ section .barra_buscar {
   margin-bottom: 20px;
 }
 
+section .barra_buscar .form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  height: 80px;
+}
+
 section .barra_buscar .form-inline label {
   margin-right: 20px;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
 section .barra_buscar .form-inline .form-control {
   margin-right: 20px;
-  width: 300px !important;
+  width: 250px !important;
 }
 
 section .barra_buscar .form-inline .form-control:focus {
@@ -66,24 +73,38 @@ section .barra_buscar .form-inline .form-control:focus {
   box-shadow: 0 0 0 0.2rem #61c4e2;
 }
 
-section .barra_buscar .form-inline .btn {
+section .barra_buscar .form-inline .btns {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+section .barra_buscar .form-inline .btns .btn {
   color: #61c4e2;
   background: black;
   border-color: black;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
-section .barra_buscar .form-inline .btn:hover {
+section .barra_buscar .form-inline .btns .btn:last-child {
+  margin-right: 0px;
+}
+
+section .barra_buscar .form-inline .btns .btn:hover {
   color: black;
   background-color: #61c4e2;
   border-color: #61c4e2;
 }
 
-section .barra_buscar .form-inline .btn:focus {
+section .barra_buscar .form-inline .btns .btn:focus {
   box-shadow: 0 0 0 0.2rem rgba(97, 196, 226, 0.76);
 }
 
-section .barra_buscar .form-inline .btn.disabled:hover {
+section .barra_buscar .form-inline .btns .btn.disabled:hover {
   color: #61c4e2;
   background: black;
   border-color: black;
@@ -135,6 +156,11 @@ section .contenido .content .verde {
   color: #45cf43;
   transition: all .5s ease;
   height: 30px;
+}
+
+section .contenido .content .borrar:hover {
+  background-color: #ff383894;
+  cursor: pointer;
 }
 
 section .contenido .content .btn {
