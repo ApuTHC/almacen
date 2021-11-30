@@ -8,18 +8,18 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Inventario</title>
+    <title>Ventas</title>
 </head>
 
 <body>
     <header class="container-fluid">
         <div class="row d-flex">
             <img class="logo" src="img/logo.png" alt="Logo">
-            <h1 class="title">Ferreteria Toño</h1>
+            <h1 class="title">Variedades Coño</h1>
             <div class="links d-block">
                 <a href="taller.html">Taller</a>
-                <a href="venta.html">Venta</a>
-                <a class="hovered" href="#">Inventario</a>
+                <a class="hovered" href="#">Venta</a>
+                <a href="index.html">Inventario</a>
                 <a href="pocas.html">Pocas Existencias</a>
             </div>
         </div>
@@ -29,20 +29,19 @@
         <div class="row barra_buscar">
             <div class="col-12">
                 <div class="form-inline">
-                    <label for="producto">Producto a Buscar:</label>
+                    <label for="producto">Agregar Producto:</label>
                     <input type="search" class="form-control" placeholder="Pulsa Buscar Para Ver Todos" id="producto">
                     <div class="btns">
                         <button type="button" class="btn" id="buscar"> <i class="fas fa-search"></i> Buscar</button>
-                        <button type="button" class="btn" id="editar"> <i class="fas fa-edit"></i> Editar</button>
-                        <button type="button" class="btn" id="agregar"> <i class="fas fa-plus"></i> Agregar</button>
-                        <button type="button" class="btn" id="borrar"> <i class="fas fa-times"></i> Borrar</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row contenido">
             <div class="col-12 content">
-
+            </div>
+            <div class="col-12 factura">
+                <p>Agregue algún Producto</p>
             </div>
         </div>
     </section>
@@ -71,7 +70,7 @@
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/buscarProd.js"></script>
+    <script src="js/venta.js"></script>
 </body>
 
 </html>

@@ -136,6 +136,11 @@ section .contenido .table td {
   padding: 0.3rem;
 }
 
+section .contenido .factura {
+  border-top: solid 1px black;
+  text-align: center;
+}
+
 section .contenido .content label {
   margin-right: 5px;
 }

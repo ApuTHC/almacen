@@ -100,7 +100,7 @@ $(document).ready(function () {
         var button = $(event.relatedTarget) // Button that triggered the modal
         trid = button.data('whatever') // Extract info from data-* attributes
         var modal = $(this)
-        modal.find('.modal-title').text('Espere un momento')
+        modal.find('.modal-title').html('<p>Espere un momento    <i class="fas fa-exclamation-triangle"></i></p>')
         modal.find('.modal-body .modal-text').text('Seguro que desea borrar el producto: '+$("#"+trid+" .nombre").text())
     })
 
