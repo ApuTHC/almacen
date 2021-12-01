@@ -29,6 +29,18 @@
         <div class="row barra_buscar">
             <div class="col-12">
                 <div class="form-inline">
+                    <div class="form-group">
+                        <label for="lista">Filtrar por:</label>
+                        <select class="form-control" id="lista">
+                            <option value="id">id</option>
+                            <option value="nombre">Nombre</option>
+                            <option value="presentacion">Presentación</option>
+                            <option value="precio-1">Precios Mayores a:</option>
+                            <option value="precio-2">Precios Menores a:</option>
+                            <option value="cantidad-1">Cantidades Mayores a:</option>
+                            <option value="cantidad-2">Cantidades Menores a:</option>
+                        </select>
+                    </div>
                     <label for="producto">Producto a Buscar:</label>
                     <input type="search" class="form-control" placeholder="Pulsa Buscar Para Ver Todos" id="producto">
                     <div class="btns">
@@ -36,6 +48,11 @@
                         <button type="button" class="btn" id="editar"> <i class="fas fa-edit"></i> Editar</button>
                         <button type="button" class="btn" id="agregar"> <i class="fas fa-plus"></i> Agregar</button>
                         <button type="button" class="btn" id="borrar"> <i class="fas fa-times"></i> Borrar</button>
+                        <button type="button" class="btn" id="cargar"> <i class="fas fa-upload"></i> Cargar</button>
+                        <form action="descarga.php" method="POST">
+                            <input type="text" name="busqueda" id="busqueda" class="d-none" value="si">
+                            <button type="submit" class="btn" id="btn_descarga"><i class="fas fa-download"></i> Descargar</button>
+                        </form>
                     </div>
                 </div>
             </div>

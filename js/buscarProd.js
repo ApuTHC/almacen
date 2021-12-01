@@ -13,6 +13,8 @@ $(document).ready(function () {
         $("#editar").prop("disabled", false);
         $("#editar").removeClass("disabled");
         $("#editar").html('<i class="fas fa-edit"></i> Editar');
+        $("#btn_descarga").removeClass("disabled");
+        $("#btn_descarga").prop("disabled", false);
         edit=0;
         mostrarProd();
     });
@@ -52,6 +54,8 @@ $(document).ready(function () {
         $("#editar").prop("disabled", true);
         $("#editar").addClass("disabled");
         $("#editar").html('<i class="fas fa-edit"></i> Editar');
+        $("#btn_descarga").addClass("disabled");
+        $("#btn_descarga").prop("disabled", true);
         $(".content").empty();
         $(".content").html($(
              '<label for="producto">Nombre:</label>'+
@@ -95,6 +99,10 @@ $(document).ready(function () {
             borrar();
         }, 500);
     });
+    
+    $("#cargar").click(function (e) {
+        $(location).attr('href', "carga-inventario.html");
+    });
 
     $('#borrarModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
@@ -106,33 +114,42 @@ $(document).ready(function () {
 
     function mostrarProd() {
         producto=$("#producto").val();
+        filtro = $("#lista").val();
         $.ajax({
                 method: "POST",
                 url: "php/inventario.php",
                 data: {
                     text: producto,
                     table: "productos",
+                    filtro: filtro,
                     modo: "inventario"
                 }
             })
             .done(function (response) {
                 $(".content").html(response);
+                $("#busqueda").val(response);
             });
+            
+        
     }
 
     function borrar() {
         producto=$("#producto").val();
+        filtro = $("#lista").val();
+        $("#busqueda").val(producto+'-'+filtro);
         $.ajax({
                 method: "POST",
                 url: "php/inventario.php",
                 data: {
                     text: producto,
                     table: "productos",
+                    filtro: filtro,
                     modo: "borrar"
                 }
             })
             .done(function (response) {
                 $(".content").html(response);
+                $("#busqueda").val(response);
             });
     }
 
@@ -178,17 +195,22 @@ $(document).ready(function () {
     }
 
     function editar() {
+        producto=$("#producto").val();
+        filtro = $("#lista").val();
+        $("#busqueda").val(producto+'-'+filtro);
         $.ajax({
                 method: "POST",
                 url: "php/inventario.php",
                 data: {
                     text: producto,
                     table: "productos",
+                    filtro: filtro,
                     modo: "editar"
                 }
             })
             .done(function (response) {
                 $(".content").html(response);
+                $("#busqueda").val(response);
             });
     }
 

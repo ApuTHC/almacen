@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Cargar Inventario</title>
+</head>
+
+<body>
+    <header class="container-fluid">
+        <div class="row d-flex">
+            <img class="logo" src="img/logo.png" alt="Logo">
+            <h1 class="title">Ferreteria Toño</h1>
+            <div class="links d-block">
+                <a href="taller.html">Taller</a>
+                <a href="venta.html">Venta</a>
+                <a class="hovered" href="index.html">Inventario</a>
+                <a href="pocas.html">Pocas Existencias</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="main-cargar container">
+        <div class="row barra_buscar">
+            <div class="col-12">
+                <div class="formulario-cargar">
+                    <h1>Seleccione el archivo de excel que contiene la base de datos</h1>
+                    <form id="form-cargar" action="cargar-inventario.php" target="_ blank" method="post" enctype="multipart/form-data">
+                        <input id="file_id" class="custom-file-input" onchange='cambiar()' type="file" name="archivo">
+                        <label class="custom-file-label"  id="label_id" data-browse="Elegir" for="file_id">Base de datos...</label>
+                        <div class="btn_subir">
+                            <button class="btn btn-primary" id="btn_id" type="submit"><i class="fas fa-file-upload"></i> Subir</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row contenido">
+            <div class="col-12 content">
+                
+            </div>
+        </div>
+    </section>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/cargar.js"></script>
+</body>
+
+</html>

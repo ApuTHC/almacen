@@ -110,6 +110,9 @@ section .barra_buscar .form-inline .btns .btn.disabled:hover {
   border-color: black;
 }
 
+
+
+
 section .contenido h4 {
   font-weight: bold;
   font-size: 1.7rem;
@@ -193,5 +196,31 @@ footer p {
   position: relative;
   bottom: 0px;
   right: 40%;
+}
+
+.formulario-cargar{
+  margin-top: 20px;
+}
+
+.formulario-cargar h1{
+  font-size: 2rem;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#label_id{
+  width: 500px;
+  margin: auto;
+  top: 70px;
+}
+
+#form-cargar{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 /*# sourceMappingURL=main.css.map */
