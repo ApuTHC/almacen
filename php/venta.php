@@ -9,27 +9,59 @@ die("Error: No se pudo conectar");
 if(!mysqli_select_db($mysql,"almacen")) 
 die("Error: No existe la base de datos");
 if ($modo == 'inventario') {
-    // Sentencia SQL: muestra todo el contenido de la tabla "productos" 
-    $sentencia = "SELECT * FROM $productos WHERE nombre LIKE'%$producto%' ORDER BY `productos`.`nombre` ASC"; 
+    $aux = explode("-", $_POST['filtro']);
+    $filtro = $aux[0];
+    if($filtro == 'id' || $filtro == 'nombre' || $filtro == 'presentacion' || $filtro == 'referencia'){
+        $sentencia = "SELECT * FROM $productos WHERE $filtro LIKE'%$producto%' ORDER BY `$productos`.`$filtro` ASC"; 
+    }else{
+        if($producto==''){
+            $producto='0';
+        }
+        $aux1 = intval($producto);
+
+        if($filtro=='cantidad'){
+            if($aux[1]=='1'){
+                $sentencia = "SELECT * FROM $productos WHERE $filtro >= $aux1 ORDER BY `$productos`.`$filtro` ASC";
+                $producto='Cantidades Mayores a '.$aux1; 
+            }else{
+                $sentencia = "SELECT * FROM $productos WHERE $filtro <= $aux1 ORDER BY `$productos`.`$filtro` ASC";
+                $producto='Cantidades Menores a '.$aux1; 
+            }
+        }else{
+            if($aux[1]=='1'){
+                $sentencia = "SELECT * FROM $productos WHERE $filtro >= $aux1 ORDER BY `$productos`.`$filtro` ASC"; 
+                $producto='Precios Mayores a '.$aux1; 
+            }else{
+                $sentencia = "SELECT * FROM $productos WHERE $filtro <= $aux1 ORDER BY `$productos`.`$filtro` ASC";
+                $producto='Precios Menores a '.$aux1; 
+            }
+        }
+
+    } 
     // Ejecuta la sentencia SQL 
     $resultado = mysqli_query($mysql, $sentencia); 
     if(!$resultado) 
     die("Error: no se pudo realizar la consulta");
     
     echo '<table class="table table-bordered table-hover">'; 
-    echo '<thead class="thead"><tr><th>' . 'Nombre' . '</th><th>' . 'Cantidad' . '</th><th>' . 'Presentación' . '</th><th>' . 'Precio' . '</th></tr></thead>'; 
+    echo '<thead class="thead"><tr><th>' . 'ID' . '</th><th>' . 'Nombre' . '</th><th>' . 'Referencia' . '</th><th>' . 'Cantidad' . '</th><th>' . 'Presentación' . '</th><th>' . 'Precio' . '</th></tr></thead>'; 
     $aux=0;
     while($fila = mysqli_fetch_array($resultado)) { 
-        echo '<tr id="'.$fila['id'].'">'; 
-        echo '<td class="nombre">' . $fila['nombre'] . '</td><td class="cantidad">' . $fila['cantidad'] . '</td><td class="present">' . $fila['presentacion'] . '</td><td class="precio">' . $fila['precio'] . '</td>'; 
-        echo '</tr>'; 
+        echo '<tr class="agregar-venta" id="'.$fila['id'].'" data-toggle="modal" data-target="#agregarModal" data-whatever="'.$fila['id'].'">'; 
+        echo '<td class="id">' . $fila['id'] . '</td><td class="nombre">' . $fila['nombre'] . '</td><td class="referencia">' . $fila['referencia'] . '</td><td class="cantidad">' . $fila['cantidad'] . '</td><td class="present">' . $fila['presentacion'] . '</td><td class="precio">' . $fila['precio'] . '</td>'; 
+        echo '</tr>';
         $aux++;
-    } 
+    }  
     if ($aux==0) {
-        echo '<td colspan="4" class="nohay">No Hay Resultados para: "'. $producto .'"</td>';  
+        echo '<td colspan="5" class="nohay">No Hay Resultados para: "'. $producto .'"</td>';  
         ?>
             <script type="text/javascript">
-                
+                $("#editar").addClass("disabled");
+                $("#editar").prop("disabled", true);
+                $("#borrar").addClass("disabled");
+                $("#borrar").prop("disabled", true);
+                $("#btn_descarga").addClass("disabled");
+                $("#btn_descarga").prop("disabled", true);
             </script>
         <?php
     }

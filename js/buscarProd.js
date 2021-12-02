@@ -35,8 +35,9 @@ $(document).ready(function () {
                 nombre=$("#"+auxid+" .nombre").val().replace("'", '"');
                 cantidades=$("#"+auxid+" .cantidad").val();
                 presentaciones=$("#"+auxid+" .present").val();
+                referencia=$("#"+auxid+" .referencia").val();
                 precios=$("#"+auxid+" .precio").val();
-                editar2(auxid,nombre,cantidades,presentaciones,precios);
+                editar2(auxid,nombre,referencia,cantidades,presentaciones,precios);
             }
             setTimeout(() => {
                mostrarProd(); 
@@ -61,6 +62,8 @@ $(document).ready(function () {
              '<label for="producto">Nombre:</label>'+
              '<input type="text" class="form-control" placeholder="Nombre" id="nombre">'+
              '<label for="producto">Cantidad:</label>'+
+             '<input type="text" class="form-control" placeholder="Referencia" id="referencia">'+
+             '<label for="referencia">Referencia:</label>'+
              '<input type="number" class="form-control" placeholder="Cantidad" id="cantidad">'+
              '<label for="producto">Presentación:</label>'+
              '<input type="text" class="form-control" placeholder="Presentación" id="present">'+
@@ -71,7 +74,7 @@ $(document).ready(function () {
         ));
         $("#guardar").click(function (e) { 
             e.preventDefault();
-            if($("#nombre").val() && $("#cantidad").val() && $("#present").val() && $("#precio").val()){
+            if($("#nombre").val() && $("#referencia").val() && $("#cantidad").val() && $("#present").val() && $("#precio").val()){
                 nombre=$("#nombre").val().replace("'", '"');
                 agregar();
             }
@@ -128,9 +131,28 @@ $(document).ready(function () {
             .done(function (response) {
                 $(".content").html(response);
                 $("#busqueda").val(response);
+                SetNumber();
             });
             
         
+    }
+
+    function SetNumber(){
+        var numeros = $('.precio');
+        for (let i = 0; i < numeros.length; i++) {
+            numero=numeros[i].innerHTML;
+            // var corregido = numero.toString();
+            // var pattern = /(-?\d+)(\d{3})/;
+            // while (pattern.test(corregido)){
+            //     corregido = corregido.replace(pattern, "$1.$2");
+            // }
+            var corregido = parseFloat(numero.replace(/,/g, ""))
+                    .toFixed(2)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            corregido.replace(/,/g, "");
+            numeros[i].innerHTML = corregido;      
+        }
     }
 
     function borrar() {
@@ -150,6 +172,7 @@ $(document).ready(function () {
             .done(function (response) {
                 $(".content").html(response);
                 $("#busqueda").val(response);
+                SetNumber();
             });
     }
 
@@ -167,6 +190,7 @@ $(document).ready(function () {
             })
             .done(function (response) {
                 $(".content").html(response);
+                SetNumber();
             });
     }
 
@@ -179,6 +203,7 @@ $(document).ready(function () {
                     table:"productos",
                     modo: "agregar",
                     nombre: nombre,
+                    referencia: $("#referencia").val(),
                     cantidad: $("#cantidad").val(),
                     presentacion: $("#present").val(),
                     precio:$("#precio").val()
@@ -191,6 +216,7 @@ $(document).ready(function () {
                 setTimeout(() => {
                     $("#mensaje").html("");
                 }, 3000);
+                SetNumber();
             });
     }
 
@@ -211,10 +237,11 @@ $(document).ready(function () {
             .done(function (response) {
                 $(".content").html(response);
                 $("#busqueda").val(response);
+                SetNumber();
             });
     }
 
-    function editar2(id,nom,cant,pres,prec) {
+    function editar2(id,nom,ref,cant,pres,prec) {
         $.ajax({
                 method: "POST",
                 url: "php/inventario.php",
@@ -224,6 +251,7 @@ $(document).ready(function () {
                     modo: "editar2",
                     id: id,
                     nombre: nom,
+                    referencia: ref,
                     cantidad: cant,
                     presentacion: pres,
                     precio:prec

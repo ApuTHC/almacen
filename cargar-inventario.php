@@ -59,18 +59,19 @@ $i=0;
 for ($indiceFila = 2; $indiceFila <= $numeroMayorDeFila; $indiceFila++) {
     $id = $hojaDeProductos->getCellByColumnAndRow(1, $indiceFila);
     $nombre = $hojaDeProductos->getCellByColumnAndRow(2, $indiceFila);
-    $cantidad = $hojaDeProductos->getCellByColumnAndRow(3, $indiceFila);
-    $presentacion = $hojaDeProductos->getCellByColumnAndRow(4, $indiceFila);
-    $precio = $hojaDeProductos->getCellByColumnAndRow(5, $indiceFila);
+    $referencia = $hojaDeProductos->getCellByColumnAndRow(3, $indiceFila);
+    $cantidad = $hojaDeProductos->getCellByColumnAndRow(4, $indiceFila);
+    $presentacion = $hojaDeProductos->getCellByColumnAndRow(5, $indiceFila);
+    $precio = $hojaDeProductos->getCellByColumnAndRow(6, $indiceFila);
     
     $sentencia = "SELECT * FROM `productos` WHERE `nombre` LIKE'$nombre'"; 
     $resultado = mysqli_query($mysql, $sentencia); 
     if(!$resultado) 
     die("Error: no se pudo realizar la consulta");
     if($fila = mysqli_fetch_array($resultado)) { 
-        $sentencia = "UPDATE `productos` SET `id`='$id',`nombre`='$nombre',`cantidad`='$cantidad',`presentacion`='$presentacion',`precio`='$precio' WHERE nombre='$nombre'"; 
+        $sentencia = "UPDATE `productos` SET `id`='$id',`nombre`='$nombre',`referencia`='$referencia',`cantidad`='$cantidad',`presentacion`='$presentacion',`precio`='$precio' WHERE nombre='$nombre'"; 
     }else{
-        $sentencia = "INSERT INTO `productos` (`id`, `nombre`, `cantidad`, `presentacion`, `precio`) VALUES ('$id', '$nombre', '$cantidad', '$presentacion', '$precio')"; 
+        $sentencia = "INSERT INTO `productos` (`id`, `nombre`, `referencia`, `cantidad`, `presentacion`, `precio`) VALUES ('$id', '$nombre', '$referencia', '$cantidad', '$presentacion', '$precio')"; 
     }
     mysqli_query($mysql, $sentencia);
     mysqli_free_result($resultado);

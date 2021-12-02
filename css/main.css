@@ -110,9 +110,6 @@ section .barra_buscar .form-inline .btns .btn.disabled:hover {
   border-color: black;
 }
 
-
-
-
 section .contenido h4 {
   font-weight: bold;
   font-size: 1.7rem;
@@ -142,6 +139,20 @@ section .contenido .table td {
 section .contenido .factura {
   border-top: solid 1px black;
   text-align: center;
+  padding-top: 50px;
+}
+
+section .contenido .factura .acantidad input {
+  width: 50px;
+}
+
+section .contenido .factura .borrar:hover {
+  background-color: #ff383894;
+  cursor: pointer;
+}
+
+section .contenido .factura #descuento {
+  width: 100px;
 }
 
 section .contenido .content label {
@@ -171,6 +182,11 @@ section .contenido .content .borrar:hover {
   cursor: pointer;
 }
 
+section .contenido .content .agregar-venta:hover {
+  background-color: #45cf43;
+  cursor: pointer;
+}
+
 section .contenido .content .btn {
   transition: all .3s ease;
   color: #61c4e2;
@@ -191,30 +207,17 @@ section .contenido .content .btn:focus {
   box-shadow: 0 0 0 0.2rem rgba(97, 196, 226, 0.76);
 }
 
-footer p {
-  text-align: center;
-  position: relative;
-  bottom: 0px;
-  right: 40%;
-}
-
-.formulario-cargar{
+section .formulario-cargar {
   margin-top: 20px;
 }
 
-.formulario-cargar h1{
+section .formulario-cargar h1 {
   font-size: 2rem;
   margin-bottom: 5px;
   text-align: center;
 }
 
-#label_id{
-  width: 500px;
-  margin: auto;
-  top: 70px;
-}
-
-#form-cargar{
+section .formulario-cargar #form-cargar {
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -222,5 +225,26 @@ footer p {
   align-items: center;
   flex-wrap: wrap;
   margin-top: 20px;
+}
+
+section .formulario-cargar #form-cargar #label_id {
+  width: 500px;
+  margin: auto;
+  top: 110px;
+}
+
+section .modal-text span {
+  font-weight: bold;
+}
+
+section .modal-text input {
+  width: 50px;
+}
+
+footer p {
+  text-align: center;
+  position: relative;
+  bottom: 0px;
+  right: 40%;
 }
 /*# sourceMappingURL=main.css.map */

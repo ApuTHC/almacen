@@ -29,7 +29,20 @@
         <div class="row barra_buscar">
             <div class="col-12">
                 <div class="form-inline">
-                    <label for="producto">Agregar Producto:</label>
+                    <div class="form-group">
+                        <label for="lista">Filtrar por:</label>
+                        <select class="form-control" id="lista">
+                            <option value="id">id</option>
+                            <option value="nombre">Nombre</option>
+                            <option value="presentacion">Presentación</option>
+                            <option value="referencia">Referencia</option>
+                            <option value="precio-1">Precios Mayores a:</option>
+                            <option value="precio-2">Precios Menores a:</option>
+                            <option value="cantidad-1">Cantidades Mayores a:</option>
+                            <option value="cantidad-2">Cantidades Menores a:</option>
+                        </select>
+                    </div>
+                    <label for="producto">Producto a Buscar:</label>
                     <input type="search" class="form-control" placeholder="Pulsa Buscar Para Ver Todos" id="producto">
                     <div class="btns">
                         <button type="button" class="btn" id="buscar"> <i class="fas fa-search"></i> Buscar</button>
@@ -41,13 +54,39 @@
             <div class="col-12 content">
             </div>
             <div class="col-12 factura">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead">
+                        <tr>
+                            <th>Producto</th>
+                            <th>Referencia</th>
+                            <th>Cantidad</th>
+                            <th>Presentación</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-content">
+                        <tr>
+                            <td colspan="5" class="nohay">No Se Han Agregado Productos</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="descuento">
+                            <td colspan="4">Descuento</td>
+                            <td ><input id="descuento" type="number" min="0" value="0"></td>
+                        </tr>
+                        <tr class="precio-total">
+                            <td colspan="4">Precio Total</td>
+                            <td id="precioTotal">0</td>
+                        </tr>
+                    </tfoot>
+                </table>
                 <p>Agregue algún Producto</p>
             </div>
         </div>
     </section>
 
     <section class="modal-container">
-        <div class="modal fade" id="borrarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -61,7 +100,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="borrar2" >Borrar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="agregar" >Agregar</button>
                     </div>
                 </div>
             </div>

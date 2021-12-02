@@ -135,6 +135,22 @@ section {
         .factura{
             border-top: solid 1px black;
             text-align: center;
+            padding-top: 50px;
+            .acantidad{
+                input{
+                    width: 50px;
+                }
+            }
+            .borrar{
+                &:hover{
+                    background-color: #ff383894;
+                    cursor: pointer;
+                }
+            }
+
+            #descuento{
+                width: 100px;
+            }
         }
         .content{
             label{
@@ -161,6 +177,12 @@ section {
                     cursor: pointer;
                 }
             }
+            .agregar-venta{
+                &:hover{
+                    background-color: #45cf43;
+                    cursor: pointer;
+                }
+            }
             .btn{
                 transition: all .3s ease;
                 color: $color-principal;
@@ -182,6 +204,40 @@ section {
         }
 
     }
+
+    .formulario-cargar{
+        margin-top: 20px;
+
+        h1{
+            font-size: 2rem;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        #form-cargar{
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            #label_id{
+                width: 500px;
+                margin: auto;
+                top: 110px;
+            }
+          }
+          
+    }
+
+    .modal-text{
+        span{
+            font-weight: bold;
+        }
+        input{
+            width: 50px;
+        }
+    } 
 }
 
 footer {

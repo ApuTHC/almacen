@@ -12,7 +12,7 @@ die("Error: No existe la base de datos");
 if ($modo == 'inventario') {
     $aux = explode("-", $_POST['filtro']);
     $filtro = $aux[0];
-    if($filtro == 'id' || $filtro == 'nombre' || $filtro == 'presentacion'){
+    if($filtro == 'id' || $filtro == 'nombre' || $filtro == 'presentacion'|| $filtro == 'referencia'){
         $sentencia = "SELECT * FROM $productos WHERE $filtro LIKE'%$producto%' ORDER BY `$productos`.`$filtro` ASC"; 
     }else{
         if($producto==''){
@@ -47,16 +47,16 @@ if ($modo == 'inventario') {
     die("Error: no se pudo realizar la consulta");
     
     echo '<table class="table table-bordered table-hover">'; 
-    echo '<thead class="thead"><tr><th>' . 'ID' . '</th><th>' . 'Nombre' . '</th><th>' . 'Cantidad' . '</th><th>' . 'Presentación' . '</th><th>' . 'Precio' . '</th></tr></thead>'; 
+    echo '<thead class="thead"><tr><th>' . 'ID' . '</th><th>' . 'Nombre' . '</th><th>' . 'Referencia' . '</th><th>' . 'Cantidad' . '</th><th>' . 'Presentación' . '</th><th>' . 'Precio' . '</th></tr></thead>'; 
     $aux=0;
     while($fila = mysqli_fetch_array($resultado)) { 
         echo '<tr id="'.$fila['id'].'">'; 
-        echo '<td class="id">' . $fila['id'] . '</td><td class="nombre">' . $fila['nombre'] . '</td><td class="cantidad">' . $fila['cantidad'] . '</td><td class="present">' . $fila['presentacion'] . '</td><td class="precio">' . $fila['precio'] . '</td>'; 
+        echo '<td class="id">' . $fila['id'] . '</td><td class="nombre">' . $fila['nombre'] . '</td><td class="referencia">' . $fila['referencia'] . '</td><td class="cantidad">' . $fila['cantidad'] . '</td><td class="present">' . $fila['presentacion'] . '</td><td class="precio">' . $fila['precio'] . '</td>'; 
         echo '</tr>'; 
         $aux++;
     } 
     if ($aux==0) {
-        echo '<td colspan="5" class="nohay">No Hay Resultados para: "'. $producto .'"</td>';  
+        echo '<td colspan="6" class="nohay">No Hay Resultados para: "'. $producto .'"</td>';  
         ?>
             <script type="text/javascript">
                 $("#editar").addClass("disabled");
@@ -75,7 +75,7 @@ if ($modo == 'inventario') {
 if ($modo == 'borrar') {
     $aux = explode("-", $_POST['filtro']);
     $filtro = $aux[0];
-    if($filtro == 'id' || $filtro == 'nombre' || $filtro == 'presentacion'){
+    if($filtro == 'id' || $filtro == 'nombre' || $filtro == 'presentacion' || $filtro == 'referencia'){
         $sentencia = "SELECT * FROM $productos WHERE $filtro LIKE'%$producto%' ORDER BY `$productos`.`$filtro` ASC"; 
     }else{
         if($producto==''){
@@ -108,11 +108,11 @@ if ($modo == 'borrar') {
     die("Error: no se pudo realizar la consulta");
     
     echo '<table class="table table-bordered table-hover">'; 
-    echo '<thead class="thead"><tr><th>' . 'ID' . '</th><th>' . 'Nombre' . '</th><th>' . 'Cantidad' . '</th><th>' . 'Presentación' . '</th><th>' . 'Precio' . '</th></tr></thead>'; 
+    echo '<thead class="thead"><tr><th>' . 'ID' . '</th><th>' . 'Nombre' . '</th><th>' . 'Referencia' . '</th><th>' . 'Cantidad' . '</th><th>' . 'Presentación' . '</th><th>' . 'Precio' . '</th></tr></thead>'; 
     $aux=0;
     while($fila = mysqli_fetch_array($resultado)) { 
         echo '<tr class="borrar" id="'.$fila['id'].'" data-toggle="modal" data-target="#borrarModal" data-whatever="'.$fila['id'].'">'; 
-        echo '<td class="id">' . $fila['id'] . '</td><td class="nombre">' . $fila['nombre'] . '</td><td class="cantidad">' . $fila['cantidad'] . '</td><td class="present">' . $fila['presentacion'] . '</td><td class="precio">' . $fila['precio'] . '</td>'; 
+        echo '<td class="id">' . $fila['id'] . '</td><td class="nombre">' . $fila['nombre'] . '</td><td class="referencia">' . $fila['referencia'] . '</td><td class="cantidad">' . $fila['cantidad'] . '</td><td class="present">' . $fila['presentacion'] . '</td><td class="precio">' . $fila['precio'] . '</td>'; 
         echo '</tr>';
         $aux++;
     }  
@@ -162,9 +162,10 @@ if ($modo == 'agregar') {
     if ($aux==0) {
         $cantidad = $_POST['cantidad'];
         $presentacion = $_POST['presentacion'];
+        $referencia = $_POST['referencia'];
         $precio = $_POST['precio'];
         // Sentencia SQL: Agrega una nueva fila
-        $sentencia = "INSERT INTO $productos (id, nombre, cantidad, presentacion, precio) VALUES (NULL, '$nombre', '$cantidad', '$presentacion', '$precio')"; 
+        $sentencia = "INSERT INTO $productos (id, nombre, referencia, cantidad, presentacion, precio) VALUES (NULL, '$nombre', '$referencia' ,'$cantidad', '$presentacion', '$precio')"; 
         // Ejecuta la sentencia SQL 
         $resultado = mysqli_query($mysql, $sentencia);    
         echo 'Se Agregó el Producto Correctamente';
@@ -173,7 +174,7 @@ if ($modo == 'agregar') {
 if ($modo == 'editar') {
     $aux = explode("-", $_POST['filtro']);
     $filtro = $aux[0];
-    if($filtro == 'id' || $filtro == 'nombre' || $filtro == 'presentacion'){
+    if($filtro == 'id' || $filtro == 'nombre' || $filtro == 'presentacion' || $filtro == 'referencia'){
         $sentencia = "SELECT * FROM $productos WHERE $filtro LIKE'%$producto%' ORDER BY `$productos`.`$filtro` ASC"; 
     }else{
         if($producto==''){
@@ -206,11 +207,11 @@ if ($modo == 'editar') {
     die("Error: no se pudo realizar la consulta");
     
     echo '<table class="table table-bordered table-hover">'; 
-    echo '<thead class="thead"><tr><th>' . 'ID' . '</th><th>' . 'Nombre' . '</th><th>' . 'Cantidad' . '</th><th>' . 'Presentación' . '</th><th>' . 'Precio' . '</th></tr></thead>'; 
+    echo '<thead class="thead"><tr><th>' . 'ID' . '</th><th>' . 'Nombre' . '</th><th>' . 'Referencia' . '</th><th>' . 'Cantidad' . '</th><th>' . 'Presentación' . '</th><th>' . 'Precio' . '</th></tr></thead>'; 
     $aux=0;
     while($fila = mysqli_fetch_array($resultado)) { 
         echo '<tr class="identi" id="'.$fila['id'].'">'; 
-        echo '<td><input class="id" type="text" value="'.$fila['id'].'"></td> <td><input class="nombre" type="text" value="'.$fila['nombre'].'"></td> <td><input class="cantidad" type="number" value="'.$fila['cantidad'].'"></td> <td><input class="present" type="text" value="'.$fila['presentacion'].'"></td> <td><input class="precio" type="number" value="'.$fila['precio'].'"></td>';
+        echo '<td><input class="id" type="text" value="'.$fila['id'].'"></td> <td><input class="nombre" type="text" value="'.$fila['nombre'].'"></td> <td><input class="referencia" type="text" value="'.$fila['referencia'].'"></td> <td><input class="cantidad" type="number" value="'.$fila['cantidad'].'"></td> <td><input class="present" type="text" value="'.$fila['presentacion'].'"></td> <td><input class="precio" type="number" value="'.$fila['precio'].'"></td>';
         $aux++;
     }  
     if ($aux==0) {
@@ -233,8 +234,9 @@ if ($modo == 'editar2') {
     $nombre = $_POST['nombre'];
     $cantidad = $_POST['cantidad'];
     $presentacion = $_POST['presentacion'];
+    $referencia = $_POST['referencia'];
     $precio = $_POST['precio'];
-    $sentencia = "UPDATE `productos` SET `id`='$id',`nombre`='$nombre',`cantidad`='$cantidad',`presentacion`='$presentacion',`precio`='$precio' WHERE id='$id'"; 
+    $sentencia = "UPDATE `productos` SET `id`='$id',`nombre`='$nombre',`referencia`='$referencia',`cantidad`='$cantidad',`presentacion`='$presentacion',`precio`='$precio' WHERE id='$id'"; 
     // Ejecuta la sentencia SQL 
     $resultado = mysqli_query($mysql, $sentencia); 
     if(!$resultado) 
