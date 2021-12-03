@@ -155,6 +155,10 @@ section .contenido .factura #descuento {
   width: 100px;
 }
 
+section .contenido .factura .thborrar {
+  width: 10px;
+}
+
 section .contenido .content label {
   margin-right: 5px;
 }

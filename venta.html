@@ -15,7 +15,7 @@
     <header class="container-fluid">
         <div class="row d-flex">
             <img class="logo" src="img/logo.png" alt="Logo">
-            <h1 class="title">Variedades Coño</h1>
+            <h1 class="title">Ferretería Toño</h1>
             <div class="links d-block">
                 <a href="taller.html">Taller</a>
                 <a class="hovered" href="#">Venta</a>
@@ -34,8 +34,8 @@
                         <select class="form-control" id="lista">
                             <option value="id">id</option>
                             <option value="nombre">Nombre</option>
-                            <option value="presentacion">Presentación</option>
                             <option value="referencia">Referencia</option>
+                            <option value="presentacion">Presentación</option>
                             <option value="precio-1">Precios Mayores a:</option>
                             <option value="precio-2">Precios Menores a:</option>
                             <option value="cantidad-1">Cantidades Mayores a:</option>
@@ -57,6 +57,7 @@
                 <table class="table table-bordered table-hover">
                     <thead class="thead">
                         <tr>
+                            <th class="thborrar">Borrar</th>
                             <th>Producto</th>
                             <th>Referencia</th>
                             <th>Cantidad</th>
@@ -66,16 +67,16 @@
                     </thead>
                     <tbody class="table-content">
                         <tr>
-                            <td colspan="5" class="nohay">No Se Han Agregado Productos</td>
+                            <td colspan="6" class="nohay">No Se Han Agregado Productos</td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr class="descuento">
-                            <td colspan="4">Descuento</td>
-                            <td ><input id="descuento" type="number" min="0" value="0"></td>
+                            <td colspan="5">Descuento</td>
+                            <td ><input id="descuento" onchange="descont()" type="number" min="0" value="0"></td>
                         </tr>
                         <tr class="precio-total">
-                            <td colspan="4">Precio Total</td>
+                            <td colspan="5">Precio Total</td>
                             <td id="precioTotal">0</td>
                         </tr>
                     </tfoot>
