@@ -54,21 +54,36 @@ if ($modo == 'inventario') {
     }  
     if ($aux==0) {
         echo '<td colspan="5" class="nohay">No Hay Resultados para: "'. $producto .'"</td>';  
-        ?>
-            <script type="text/javascript">
-                $("#editar").addClass("disabled");
-                $("#editar").prop("disabled", true);
-                $("#borrar").addClass("disabled");
-                $("#borrar").prop("disabled", true);
-                $("#btn_descarga").addClass("disabled");
-                $("#btn_descarga").prop("disabled", true);
-            </script>
-        <?php
     }
     echo '</table>';
     // Libera la memoria del resultado
     mysqli_free_result($resultado);
 }
+
+if ($modo == 'factura') {
+    $ids = $_POST['ids'];
+    $productos1 = $_POST['productos'];
+    $referencias = $_POST['referencias'];
+    $cantidades = $_POST['cantidades'];
+    $presentaciones = $_POST['presentaciones'];
+    $precios = $_POST['precios'];
+    $totalFactura = $_POST['totalFactura'];
+    $descuentoFactura = $_POST['descuentoFactura'];
+    $fecha = $_POST['fecha'];
+    $numberIds = sizeof(explode(",", $ids));
+    for ($i=0; $i < $numberIds; $i++) { 
+        $sentencia = "UPDATE `productos` SET `id`='$id',`nombre`='$nombre',`referencia`='$referencia',`cantidad`='$cantidad',`presentacion`='$presentacion',`precio`='$precio' WHERE id='$id'"; 
+        // Ejecuta la sentencia SQL 
+        $resultado = mysqli_query($mysql, $sentencia); 
+    }
+
+    // Sentencia SQL: Agrega una nueva fila
+    $sentencia = "INSERT INTO $productos (id, ids, productos, referencias, cantidades, presentaciones, precios, total, descuento, fecha) VALUES (NULL, '$productos1', '$referencias' ,'$cantidades', '$presentaciones', '$precios', '$totalFactura', '$descuentoFactura', '$fecha')"; 
+    // Ejecuta la sentencia SQL 
+    $resultado = mysqli_query($mysql, $sentencia);  
+    echo 'Se guardó la factura correctamente';
+}    
+
 // Cierra la conexión con la base de datos 
 mysqli_close($mysql); 
 ?>

@@ -32,8 +32,8 @@
                     <div class="form-group">
                         <label for="lista">Filtrar por:</label>
                         <select class="form-control" id="lista">
-                            <option value="id">id</option>
                             <option value="nombre">Nombre</option>
+                            <option value="id">id</option>
                             <option value="nombre">Referencia</option>
                             <option value="presentacion">Presentación</option>
                             <option value="precio-1">Precios Mayores a:</option>
@@ -43,7 +43,7 @@
                         </select>
                     </div>
                     <label for="producto">Producto a Buscar:</label>
-                    <input type="search" class="form-control" placeholder="Pulsa Buscar Para Ver Todos" id="producto">
+                    <input onchange="busquedaCambio()" type="search" class="form-control" placeholder="Pulsa Buscar Para Ver Todos" id="producto">
                     <div class="btns">
                         <button type="button" class="btn" id="buscar"> <i class="fas fa-search"></i> Buscar</button>
                         <button type="button" class="btn" id="editar"> <i class="fas fa-edit"></i> Editar</button>

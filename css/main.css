@@ -118,7 +118,7 @@ section .contenido h4 {
 
 section .contenido .table {
   font-size: 1.2rem;
-  margin-bottom: 50px;
+  margin-bottom: 15px;
   text-align: center;
 }
 
@@ -134,6 +134,14 @@ section .contenido .table .thead th {
 section .contenido .table td {
   border: 2px solid #000000;
   padding: 0.3rem;
+}
+
+section .contenido .table td .id, section .contenido .table td .cantidad {
+  width: 80px;
+}
+
+section .contenido .table td .nombre, section .contenido .table td .referencia, section .contenido .table td .present, section .contenido .table td .precio, section .contenido .table td .precio_compra {
+  width: 150px;
 }
 
 section .contenido .factura {
@@ -157,6 +165,12 @@ section .contenido .factura #descuento {
 
 section .contenido .factura .thborrar {
   width: 10px;
+}
+
+section .contenido .factura .confirmaVenta {
+  margin-bottom: 50px;
+  position: absolute;
+  right: 8px;
 }
 
 section .contenido .content label {

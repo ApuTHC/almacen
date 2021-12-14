@@ -17,6 +17,7 @@ $hoja->setTitle("Inventario");
 $hoja->getStyle('A')->getNumberFormat()->setFormatCode('0');
 $hoja->getStyle('D')->getNumberFormat()->setFormatCode('0');
 $hoja->getStyle('F')->getNumberFormat()->setFormatCode('0');
+$hoja->getStyle('G')->getNumberFormat()->setFormatCode('0');
 $hoja->getStyle('A:'. $columna)->getFont()->setName('Arial');
 $hoja->getStyle('A1:'. $columna.'1')->getFont()->setBold(true)->setSize(12);
 $hoja->getStyle('A1:'. $columna.'1')->getFont()->getColor()->setARGB('00000000');
@@ -33,6 +34,7 @@ $hoja->getColumnDimension('C')->setAutoSize(true);
 $hoja->getColumnDimension('D')->setAutoSize(true);
 $hoja->getColumnDimension('E')->setAutoSize(true);
 $hoja->getColumnDimension('F')->setAutoSize(true);
+$hoja->getColumnDimension('G')->setAutoSize(true);
 
 // $styleArray = [
 //     'font' => [

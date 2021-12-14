@@ -115,7 +115,7 @@ section {
         }
         .table {
             font-size: 1.2rem;
-            margin-bottom: 50px;
+            margin-bottom: 15px;
             text-align: center;
             
             .thead {
@@ -129,6 +129,13 @@ section {
             td{
                 border: 2px solid #000000;
                 padding: 0.3rem;
+                
+                .id, .cantidad{
+                    width: 80px;
+                }
+                .nombre, .referencia, .present, .precio, .precio_compra{
+                    width: 150px;
+                }
             }
         }
         
@@ -154,6 +161,12 @@ section {
 
             .thborrar{
                 width: 10px;
+            }
+
+            .confirmaVenta{
+                margin-bottom: 50px;
+                position: absolute;
+                right: 8px;
             }
         }
         .content{
