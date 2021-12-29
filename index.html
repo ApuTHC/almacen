@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Inventario</title>
+    <title>Ventas</title>
 </head>
 
 <body>
@@ -18,8 +18,8 @@
             <h1 class="title">Ferretería Toño</h1>
             <div class="links d-block">
                 <a href="taller.html">Taller</a>
-                <a href="venta.html">Venta</a>
-                <a class="hovered" href="#">Inventario</a>
+                <a class="hovered" href="#">Venta</a>
+                <a href="inventario.html">Inventario</a>
                 <a href="pocas.html">Pocas Existencias</a>
             </div>
         </div>
@@ -34,7 +34,7 @@
                         <select class="form-control" id="lista">
                             <option value="nombre">Nombre</option>
                             <option value="id">id</option>
-                            <option value="nombre">Referencia</option>
+                            <option value="referencia">Referencia</option>
                             <option value="presentacion">Presentación</option>
                             <option value="precio-1">Precios Mayores a:</option>
                             <option value="precio-2">Precios Menores a:</option>
@@ -46,27 +46,50 @@
                     <input onchange="busquedaCambio()" type="search" class="form-control" placeholder="Pulsa Buscar Para Ver Todos" id="producto">
                     <div class="btns">
                         <button type="button" class="btn" id="buscar"> <i class="fas fa-search"></i> Buscar</button>
-                        <button type="button" class="btn" id="editar"> <i class="fas fa-edit"></i> Editar</button>
-                        <button type="button" class="btn" id="agregar"> <i class="fas fa-plus"></i> Agregar</button>
-                        <button type="button" class="btn" id="borrar"> <i class="fas fa-times"></i> Borrar</button>
-                        <button type="button" class="btn" id="cargar"> <i class="fas fa-upload"></i> Cargar</button>
-                        <form action="descarga.php" method="POST">
-                            <input type="text" name="busqueda" id="busqueda" class="d-none" value="si">
-                            <button type="submit" class="btn" id="btn_descarga"><i class="fas fa-download"></i> Descargar</button>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row contenido">
             <div class="col-12 content">
-
+                <h4 class="text-center">Busque el producto a vender.</h4>
+            </div>
+            <div class="col-12 factura">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead">
+                        <tr>
+                            <th class="thborrar">Borrar</th>
+                            <th>Producto</th>
+                            <th>Referencia</th>
+                            <th>Cantidad</th>
+                            <th>Presentación</th>
+                            <th>Precio</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-content">
+                        <tr>
+                            <td colspan="7" class="nohay">No Se Han Agregado Productos</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="descuento">
+                            <td colspan="6">Descuento</td>
+                            <td ><input id="descuento" onchange="descont()" type="number" min="0" value="0"></td>
+                        </tr>
+                        <tr class="precio-total">
+                            <td colspan="6">Precio Total</td>
+                            <td id="precioTotal">0</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <button class="confirmaVenta btn alert-info" data-toggle="modal" data-target="#ventaModal"><i class="fas fa-shopping-cart"></i> Confirmar venta</button>
             </div>
         </div>
     </section>
 
     <section class="modal-container">
-        <div class="modal fade" id="borrarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -80,7 +103,28 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="borrar2" >Borrar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="agregar" >Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="modal-container">
+        <div class="modal fade" id="ventaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-text"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="vender" >Vender</button>
                     </div>
                 </div>
             </div>
@@ -89,7 +133,8 @@
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/buscarProd.js"></script>
+    <script src="js/dateFormat.min.js"></script>
+    <script src="js/venta.js"></script>
 </body>
 
 </html>

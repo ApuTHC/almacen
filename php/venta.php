@@ -88,8 +88,43 @@ if ($modo == 'factura') {
     if(!$resultado) 
     die("Error: no se pudo realizar la consulta");
     echo 'Se guardó la factura correctamente';
+} 
+
+if ($modo == 'ver_factura') {
+
+    // Sentencia SQL: Agrega una nueva fila
+    $sentencia = "SELECT * FROM $productos WHERE id=(SELECT max(id) FROM `facturas`)"; 
+    // Ejecuta la sentencia SQL 
+    $resultado = mysqli_query($mysql, $sentencia);  
+    if(!$resultado) 
+    die("Error: no se pudo realizar la consulta");
+
+    echo '<table class="table table-bordered table-hover">'; 
+    
+    while($fila = mysqli_fetch_array($resultado)) { 
+        echo '<thead class="thead">'; 
+        echo '<tr><th class="id_factura">' . $fila['id'] . '</th><th colspan="3">' . 'Ferreteria Toño' . '</th><th>' . 'Fecha' . '</th><th>' . $fila['fecha'] . '</th>'; 
+        echo '<tr><th>' . 'Nombre' . '</th><th>' . 'Referencia' . '</th><th>' . 'Cantidad' . '</th><th>' . 'Presentación' . '</th><th>' . 'Precio' . '</th><th>' . 'Total' . '</th></tr>'; 
+        echo '</thead>'; 
+        $nombres = explode(",", $fila['productos']);
+        $referencias = explode(",", $fila['referencias']);
+        $cantidades = explode(",", $fila['cantidades']);
+        $presentaciones = explode(",", $fila['presentaciones']);
+        $precios = explode(",", $fila['precios']);
+        for ($i=0; $i < sizeof($nombres); $i++) {           
+            echo '<tr>'; 
+            echo '<td>' . $nombres[$i] . '</td><td>' . $referencias[$i] . '</td><td>' . $cantidades[$i] . '</td><td>' . $presentaciones[$i] . '</td><td class="precio">' . $precios[$i] . '</td><td class="precio">' . $precios[$i]*$cantidades[$i] . '</td>'; 
+            echo '</tr>'; 
+        }
+        echo '<tr><td colspan="5">Descuento</td><td class="precio">'. $fila['descuento'] .'</td></tr>';    
+        echo '<tr><td colspan="5">Total</td><td class="precio">'. $fila['total'] .'</td></tr>';    
+    } 
+       
+    echo '</table>';
 }    
 
-// Cierra la conexión con la base de datos 
+
 mysqli_close($mysql); 
 ?>
+
+

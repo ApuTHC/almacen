@@ -99,7 +99,7 @@ function guardarFactura(){
     var preciosCompra;
     var totalFactura;
     var descuentoFactura;
-    var fecha = dateFormat(new Date(), 'm/d/Y ; H:i:s');
+    var fecha = dateFormat(new Date(), 'd/m/Y ; H:i:s');
     console.log(seleccion);
     if (seleccion[0]) {
         for (let i = 0; i < seleccion.length; i++) {
@@ -147,6 +147,7 @@ function guardarFactura(){
             })
             .done(function (response) {
                 $(".content").html(response);
+                $(location).attr('href', "ver-factura.html");
             });
 
     }

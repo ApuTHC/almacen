@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Cargar Inventario</title>
+    <title>Ventas</title>
 </head>
 
 <body>
@@ -18,38 +18,38 @@
             <h1 class="title">Ferretería Toño</h1>
             <div class="links d-block">
                 <a href="taller.html">Taller</a>
-                <a href="index.html">Venta</a>
-                <a class="hovered" href="inventario.html">Inventario</a>
+                <a class="hovered" href="index.html">Venta</a>
+                <a href="inventario.html">Inventario</a>
                 <a href="pocas.html">Pocas Existencias</a>
             </div>
         </div>
     </header>
 
-    <section class="main-cargar container">
+    <section class="main container">
         <div class="row barra_buscar">
             <div class="col-12">
-                <div class="formulario-cargar">
-                    <h1>Seleccione el archivo de excel que contiene la base de datos <br>Recuerde que no se debe repetir el numero "ID" en la tabla de Excel</h1>
-                    <form id="form-cargar" action="cargar-inventario.php" target="_ blank" method="post" enctype="multipart/form-data">
-                        <input id="file_id" class="custom-file-input" onchange='cambiar()' type="file" name="archivo">
-                        <label class="custom-file-label"  id="label_id" data-browse="Elegir" for="file_id">Base de datos...</label>
-                        <div class="btn_subir">
-                            <button class="btn btn-primary" id="btn_id" type="submit"><i class="fas fa-file-upload"></i> Subir</button>
-                        </div>
-                    </form>
+                <div class="form-inline">
+                    <div class="btns">
+                        <form action="descarga-factura.php" method="POST">
+                            <input type="text" name="busqueda" id="busqueda" class="d-none" value="si">
+                            <input type="text" name="id_fact" id="id_fact" class="d-none" value="si">
+                            <button type="submit" class="btn" id="btn_descarga"><i class="fas fa-download"></i> Descargar</button>
+                        </form>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
         <div class="row contenido">
             <div class="col-12 content">
-                
             </div>
         </div>
     </section>
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/cargar.js"></script>
+    <script src="js/dateFormat.min.js"></script>
+    <script src="js/verFactura.js"></script>
 </body>
 
 </html>
