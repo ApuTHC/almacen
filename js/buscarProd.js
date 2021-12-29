@@ -64,9 +64,9 @@ $("#agregar").click(function (e) {
             '<br>'+
             '<label for="producto">Nombre:</label>'+
             '<input type="text" class="form-control" placeholder="Nombre" id="nombre">'+
-            '<label for="producto">Cantidad:</label>'+
+            '<label for="producto">Referencia:</label>'+
             '<input type="text" class="form-control" placeholder="Referencia" id="referencia">'+
-            '<label for="referencia">Referencia:</label>'+
+            '<label for="referencia">Cantidad:</label>'+
             '<input type="number" class="form-control" placeholder="Cantidad" id="cantidad">'+
             '<label for="producto">Presentación:</label>'+
             '<input type="text" class="form-control" placeholder="Presentación" id="present">'+

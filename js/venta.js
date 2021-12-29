@@ -52,6 +52,7 @@ $("#agregar").click(function (e) {
         select.presentacion = $("#"+trid+" .present").text();
         select.numero = precio;
         select.numeroCorregido = $("#"+trid+" .precio").text();
+        select.precioCompra = $("#"+trid+" .precio_compra").text();
         select.precioTotal = valor;
         select.precioCorregido = valorCorregido;
         seleccion.push(select);
@@ -95,9 +96,11 @@ function guardarFactura(){
     var nuevasCantidades;
     var presentaciones;
     var precios;
+    var preciosCompra;
     var totalFactura;
     var descuentoFactura;
     var fecha = dateFormat(new Date(), 'm/d/Y ; H:i:s');
+    console.log(seleccion);
     if (seleccion[0]) {
         for (let i = 0; i < seleccion.length; i++) {
             if(i==0){
@@ -108,6 +111,7 @@ function guardarFactura(){
                 nuevasCantidades = (parseInt(seleccion[i].cantidadTotal)-parseInt(seleccion[i].cantidad))+'';
                 presentaciones = seleccion[i].presentacion+'';
                 precios = seleccion[i].numero+'';
+                preciosCompra = seleccion[i].precioCompra+'';
             }else{
                 ids += ','+seleccion[i].id;
                 productos += ','+seleccion[i].nombre;
@@ -116,6 +120,7 @@ function guardarFactura(){
                 nuevasCantidades += ','+(parseInt(seleccion[i].cantidadTotal)-parseInt(seleccion[i].cantidad));
                 presentaciones += ','+seleccion[i].presentacion;
                 precios += ','+seleccion[i].numero;
+                preciosCompra += ','+seleccion[i].precioCompra;
             }
         }
         totalFactura = total;
@@ -133,6 +138,7 @@ function guardarFactura(){
                     nuevasCantidades: nuevasCantidades,
                     presentaciones: presentaciones,
                     precios: precios,
+                    preciosCompra: preciosCompra,
                     totalFactura: totalFactura,
                     descuentoFactura: descuentoFactura,
                     fecha: fecha,
@@ -141,7 +147,6 @@ function guardarFactura(){
             })
             .done(function (response) {
                 $(".content").html(response);
-                SetNumber();
             });
 
     }

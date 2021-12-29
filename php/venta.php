@@ -48,7 +48,7 @@ if ($modo == 'inventario') {
     $aux=0;
     while($fila = mysqli_fetch_array($resultado)) { 
         echo '<tr class="agregar-venta" id="'.$fila['id'].'" data-toggle="modal" data-target="#agregarModal" data-whatever="'.$fila['id'].'">'; 
-        echo '<td class="id">' . $fila['id'] . '</td><td class="nombre">' . $fila['nombre'] . '</td><td class="referencia">' . $fila['referencia'] . '</td><td class="cantidad">' . $fila['cantidad'] . '</td><td class="present">' . $fila['presentacion'] . '</td><td class="precio">' . $fila['precio'] . '</td>'; 
+        echo '<td class="id">' . $fila['id'] . '</td><td class="nombre">' . $fila['nombre'] . '</td><td class="referencia">' . $fila['referencia'] . '</td><td class="cantidad">' . $fila['cantidad'] . '</td><td class="present">' . $fila['presentacion'] . '</td><td class="precio">' . $fila['precio'] . '</td><td class="precio_compra d-none">' . $fila['precio_compra'] . '</td>'; 
         echo '</tr>';
         $aux++;
     }  
@@ -67,20 +67,26 @@ if ($modo == 'factura') {
     $cantidades = $_POST['cantidades'];
     $presentaciones = $_POST['presentaciones'];
     $precios = $_POST['precios'];
+    $preciosCompra = $_POST['preciosCompra'];
     $totalFactura = $_POST['totalFactura'];
     $descuentoFactura = $_POST['descuentoFactura'];
     $fecha = $_POST['fecha'];
-    $numberIds = sizeof(explode(",", $ids));
-    for ($i=0; $i < $numberIds; $i++) { 
-        $sentencia = "UPDATE `productos` SET `id`='$id',`nombre`='$nombre',`referencia`='$referencia',`cantidad`='$cantidad',`presentacion`='$presentacion',`precio`='$precio' WHERE id='$id'"; 
+    $numberIds = explode(",", $ids);
+    $numberCantidades = explode(",", $cantidades);
+    for ($i=0; $i < sizeof($numberIds); $i++) {
+        $id= $numberIds[$i];
+        $cantidad=$numberCantidades[$i];
+        $sentencia = "UPDATE `productos` SET `cantidad`=`cantidad`-'$cantidad' WHERE id='$id'"; 
         // Ejecuta la sentencia SQL 
         $resultado = mysqli_query($mysql, $sentencia); 
     }
 
     // Sentencia SQL: Agrega una nueva fila
-    $sentencia = "INSERT INTO $productos (id, ids, productos, referencias, cantidades, presentaciones, precios, total, descuento, fecha) VALUES (NULL, '$productos1', '$referencias' ,'$cantidades', '$presentaciones', '$precios', '$totalFactura', '$descuentoFactura', '$fecha')"; 
+    $sentencia = "INSERT INTO $productos (id, productos, referencias, cantidades, presentaciones, precios, total, descuento, fecha, ids, precio_compra) VALUES (NULL, '$productos1', '$referencias' ,'$cantidades', '$presentaciones', '$precios', '$totalFactura', '$descuentoFactura', '$fecha', '$ids', '$preciosCompra')"; 
     // Ejecuta la sentencia SQL 
     $resultado = mysqli_query($mysql, $sentencia);  
+    if(!$resultado) 
+    die("Error: no se pudo realizar la consulta");
     echo 'Se guardó la factura correctamente';
 }    
 

@@ -169,7 +169,9 @@ if ($modo == 'agregar') {
         // Sentencia SQL: Agrega una nueva fila
         $sentencia = "INSERT INTO $productos (id, nombre, referencia, cantidad, presentacion, precio, precio_compra) VALUES (NULL, '$nombre', '$referencia' ,'$cantidad', '$presentacion', '$precio', '$precio_compra')"; 
         // Ejecuta la sentencia SQL 
-        $resultado = mysqli_query($mysql, $sentencia);    
+        $resultado = mysqli_query($mysql, $sentencia); 
+        if(!$resultado) 
+        die("Error: no se pudo realizar la consulta");   
         echo 'Se Agregó el Producto Correctamente';
     }    
 }
