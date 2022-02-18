@@ -108,6 +108,7 @@ section {
     }
 
     .contenido {
+        margin-top: 50px;
         h4{
             font-weight: bold;
             font-size: 1.7rem;
@@ -255,6 +256,32 @@ section {
             width: 50px;
         }
     } 
+
+    .modal-dialog {
+        &.factura{
+            max-width: 80%;
+            margin: 1.75rem auto;
+        }
+    }
+
+    .content_btn{
+        .btn{
+            transition: all .3s ease;
+            color: $color-principal;
+            background: rgb(0, 0, 0);
+            border-color: rgb(0, 0, 0);
+            margin-right: 15px;
+            display: block;
+            &:hover {
+                color: rgb(0, 0, 0);
+                background-color: $color-principal;
+                border-color: $color-principal;
+            }
+            &:focus {
+                box-shadow: 0 0 0 0.2rem $color-principal-transp;
+            }
+        }
+    }
 }
 
 footer {

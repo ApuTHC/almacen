@@ -13,6 +13,16 @@ $("#buscar").click(function (e) {
     mostrarProd();
 });
 
+$("#facturas").click(function (e) {
+    e.preventDefault();
+    $(location).attr('href', "facturas.html");
+});
+
+$("#contabilidad").click(function (e) {
+    e.preventDefault();
+    $(location).attr('href', "contabilidad.html");
+});
+
 $("#vender").click(function (e) {
     e.preventDefault();
     guardarFactura();
@@ -97,9 +107,10 @@ function guardarFactura(){
     var presentaciones;
     var precios;
     var preciosCompra;
+    var compra_total;
     var totalFactura;
     var descuentoFactura;
-    var fecha = dateFormat(new Date(), 'd/m/Y ; H:i:s');
+    var fecha = dateFormat(new Date(), 'Y-m-d H:i:s');
     console.log(seleccion);
     if (seleccion[0]) {
         for (let i = 0; i < seleccion.length; i++) {
@@ -112,6 +123,7 @@ function guardarFactura(){
                 presentaciones = seleccion[i].presentacion+'';
                 precios = seleccion[i].numero+'';
                 preciosCompra = seleccion[i].precioCompra+'';
+                compra_total = parseInt(seleccion[i].precioCompra)*parseInt(seleccion[i].cantidad);
             }else{
                 ids += ','+seleccion[i].id;
                 productos += ','+seleccion[i].nombre;
@@ -121,6 +133,7 @@ function guardarFactura(){
                 presentaciones += ','+seleccion[i].presentacion;
                 precios += ','+seleccion[i].numero;
                 preciosCompra += ','+seleccion[i].precioCompra;
+                compra_total += parseInt(seleccion[i].precioCompra)*parseInt(seleccion[i].cantidad);
             }
         }
         totalFactura = total;
@@ -141,6 +154,7 @@ function guardarFactura(){
                     preciosCompra: preciosCompra,
                     totalFactura: totalFactura,
                     descuentoFactura: descuentoFactura,
+                    compra_total : compra_total,
                     fecha: fecha,
                     modo: "factura"
                 }

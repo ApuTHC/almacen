@@ -68,6 +68,7 @@ if ($modo == 'factura') {
     $presentaciones = $_POST['presentaciones'];
     $precios = $_POST['precios'];
     $preciosCompra = $_POST['preciosCompra'];
+    $compra_total = $_POST['compra_total'];
     $totalFactura = $_POST['totalFactura'];
     $descuentoFactura = $_POST['descuentoFactura'];
     $fecha = $_POST['fecha'];
@@ -82,7 +83,7 @@ if ($modo == 'factura') {
     }
 
     // Sentencia SQL: Agrega una nueva fila
-    $sentencia = "INSERT INTO $productos (id, productos, referencias, cantidades, presentaciones, precios, total, descuento, fecha, ids, precio_compra) VALUES (NULL, '$productos1', '$referencias' ,'$cantidades', '$presentaciones', '$precios', '$totalFactura', '$descuentoFactura', '$fecha', '$ids', '$preciosCompra')"; 
+    $sentencia = "INSERT INTO $productos (id, productos, referencias, cantidades, presentaciones, precios, total, descuento, fecha, ids, precio_compra,compra_total) VALUES (NULL, '$productos1', '$referencias' ,'$cantidades', '$presentaciones', '$precios', '$totalFactura', '$descuentoFactura', '$fecha', '$ids', '$preciosCompra', '$compra_total')"; 
     // Ejecuta la sentencia SQL 
     $resultado = mysqli_query($mysql, $sentencia);  
     if(!$resultado) 

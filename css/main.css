@@ -110,6 +110,10 @@ section .barra_buscar .form-inline .btns .btn.disabled:hover {
   border-color: black;
 }
 
+section .contenido {
+  margin-top: 50px;
+}
+
 section .contenido h4 {
   font-weight: bold;
   font-size: 1.7rem;
@@ -257,6 +261,30 @@ section .modal-text span {
 
 section .modal-text input {
   width: 50px;
+}
+
+section .modal-dialog.factura {
+  max-width: 80%;
+  margin: 1.75rem auto;
+}
+
+section .content_btn .btn {
+  transition: all .3s ease;
+  color: #61c4e2;
+  background: black;
+  border-color: black;
+  margin-right: 15px;
+  display: block;
+}
+
+section .content_btn .btn:hover {
+  color: black;
+  background-color: #61c4e2;
+  border-color: #61c4e2;
+}
+
+section .content_btn .btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(97, 196, 226, 0.76);
 }
 
 footer p {

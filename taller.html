@@ -17,8 +17,8 @@
             <img class="logo" src="img/logo.png" alt="Logo">
             <h1 class="title">Ferretería Toño</h1>
             <div class="links d-block">
-                <a href="taller.html">Taller</a>
-                <a class="hovered" href="#">Venta</a>
+                <a class="hovered" href="#">Taller</a>
+                <a href="index.html">Venta</a>
                 <a href="inventario.html">Inventario</a>
                 <a href="pocas.html">Pocas Existencias</a>
             </div>
@@ -59,62 +59,13 @@
                 <h4 class="text-center">Busque el producto a vender.</h4>
             </div>
             <div class="col-12 factura">
-                <table class="table table-bordered table-hover">
-                    <thead class="thead">
-                        <tr>
-                            <th class="thborrar">Borrar</th>
-                            <th>Producto</th>
-                            <th>Referencia</th>
-                            <th>Cantidad</th>
-                            <th>Presentación</th>
-                            <th>Precio</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-content">
-                        <tr>
-                            <td colspan="7" class="nohay">No Se Han Agregado Productos</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr class="descuento">
-                            <td colspan="6">Descuento</td>
-                            <td ><input id="descuento" onchange="descont()" type="number" min="0" value="0"></td>
-                        </tr>
-                        <tr class="precio-total">
-                            <td colspan="6">Precio Total</td>
-                            <td id="precioTotal">0</td>
-                        </tr>
-                    </tfoot>
-                </table>
                 <button class="confirmaVenta btn alert-info" data-toggle="modal" data-target="#ventaModal"><i class="fas fa-shopping-cart"></i> Confirmar venta</button>
             </div>
         </div>
     </section>
 
     <section class="modal-container">
-        <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-text"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="agregar" >Agregar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="modal-container">
-        <div class="modal fade" id="ventaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="servicioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
